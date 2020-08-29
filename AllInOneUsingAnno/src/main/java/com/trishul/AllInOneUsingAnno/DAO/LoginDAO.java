@@ -7,20 +7,23 @@ import java.sql.ResultSet;
 
 import org.springframework.stereotype.Component;
 
+import com.trishul.AllInOneUsingAnno.postgresConfig.DBManager;
+
 @Component
 public class LoginDAO {
 
-	String url = "jdbc:postgresql://localhost:5432/learning";
-	String username = "postgres";
-	String password = "Trishul@1997";
-	String query = "SELECT * FROM login_credentials WHERE username = ? AND password = ?";
+//	String url = "jdbc:postgresql://localhost:5432/learning";
+//	String username = "postgres";
+//	String password = "Trishul@1997";
+	String query = "SELECT * FROM super_admin WHERE username = ? AND password = ?";
 	
 	public boolean checkLogin(String uname,String pass)
 	{
 		try 
 		{
-			Class.forName("org.postgresql.Driver");
-			Connection conn = DriverManager.getConnection(url,username,password);
+			DBManager dbm = new DBManager();
+//			Class.forName("org.postgresql.Driver");
+			Connection conn = dbm.getMasterDBConnection();
 			PreparedStatement stmt = conn.prepareStatement(query);
 			stmt.setString(1, uname);
 			stmt.setString(2, pass);
