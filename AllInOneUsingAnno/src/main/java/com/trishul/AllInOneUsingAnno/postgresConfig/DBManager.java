@@ -3,7 +3,10 @@ package com.trishul.AllInOneUsingAnno.postgresConfig;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import org.springframework.stereotype.Component;
+
 //This file contains all the connections of database
+@Component
 public class DBManager 
 {
 	public Connection getMasterDBConnection()

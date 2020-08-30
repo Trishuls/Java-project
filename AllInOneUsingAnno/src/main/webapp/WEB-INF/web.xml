@@ -65,6 +65,12 @@
   	<description></description>
   	<servlet-class>com.trishul.AllInOneUsingAnno.deleteUser</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>addClientDetails</servlet-name>
+  	<display-name>addClientDetails</display-name>
+  	<description></description>
+  	<servlet-class>com.trishul.AllInOneUsingAnno.addClientDetails</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -98,5 +104,9 @@
   <servlet-mapping>
   	<servlet-name>deleteUser</servlet-name>
   	<url-pattern>/deluser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>addClientDetails</servlet-name>
+  	<url-pattern>/addClientDetails</url-pattern>
   </servlet-mapping>
 </web-app>

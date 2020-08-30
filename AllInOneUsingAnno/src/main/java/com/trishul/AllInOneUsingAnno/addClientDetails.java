@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import com.trishul.AllInOneUsingAnno.DAO.AddClientDAO;
 
 /**
@@ -15,16 +18,24 @@ import com.trishul.AllInOneUsingAnno.DAO.AddClientDAO;
  */
 public class addClientDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String client_name = request.getParameter("cname");
 		client_name = client_name.toLowerCase();
 //		String password = request.getParameter("pass");
 		
-		AddClientDAO obj = new AddClientDAO();
-		System.out.println(client_name);
-		int res = obj.addClientDetails(client_name);
+		//specify the configuration file
+    	ApplicationContext factory = new AnnotationConfigApplicationContext(AppConfig.class);
+    	
+		AddClientDAO dao = factory.getBean(AddClientDAO.class);
+		
+//		int res = dao.deleteUserDetails(name);
+//		AddClientDAO obj = new AddClientDAO();
+//		System.out.println(client_name);
+		int res = dao.addClientDetails(client_name);
 		
 //		System.out.println("res = "+res);
 		PrintWriter out = response.getWriter();

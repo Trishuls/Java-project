@@ -3,8 +3,14 @@ package com.trishul.AllInOneUsingAnno.DAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
+
+import com.trishul.AllInOneUsingAnno.AppConfig;
 import com.trishul.AllInOneUsingAnno.postgresConfig.DBManager;
 
+@Component
 public class AddClientDAO 
 {
 	public int addClientDetails(String client_name) {
@@ -14,7 +20,12 @@ public class AddClientDAO
 		{
 			String query = "INSERT INTO clients_table (client_name) VALUES ('"+client_name+"');";
 			
-			DBManager dbm = new DBManager();
+			//specify the configuration file
+	    	ApplicationContext factory = new AnnotationConfigApplicationContext(AppConfig.class);
+	    	
+	    	DBManager dbm = factory.getBean(DBManager.class);
+	    	
+//			DBManager dbm = new DBManager();
 			Connection conn = dbm.getMasterDBConnection();
 			PreparedStatement stmt = conn.prepareStatement(query);
 			

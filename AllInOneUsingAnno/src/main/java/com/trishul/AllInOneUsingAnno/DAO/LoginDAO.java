@@ -15,7 +15,7 @@ public class LoginDAO {
 //	String url = "jdbc:postgresql://localhost:5432/learning";
 //	String username = "postgres";
 //	String password = "Trishul@1997";
-	String query = "SELECT * FROM super_admin WHERE username = ? AND password = ?";
+	String query = "SELECT * FROM super_admin WHERE user_name = ? AND password = ?";
 	
 	public boolean checkLogin(String uname,String pass)
 	{

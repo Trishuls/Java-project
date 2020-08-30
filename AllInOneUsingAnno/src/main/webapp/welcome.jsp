@@ -29,8 +29,10 @@ Trishul welcomes you
 		<input type="submit" value="Delete">
 	</form>
 	<form action="view" method="get">
-		
 		<input type="submit" value="View">
+	</form>
+	<form action="AddClient.jsp" method="post">
+		<input type="submit" value="AddClient">
 	</form>
 	<form action="Logout.jsp" method="post">
 		<input type="submit" value="Logout">
