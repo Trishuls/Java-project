@@ -26,10 +26,7 @@ public class ViewDAO {
 		
 		ArrayList<LoginGetterSetter> pList = new ArrayList<LoginGetterSetter>();
 		
-		//specify the configuration file
-    	ApplicationContext factory = new AnnotationConfigApplicationContext(AppConfig.class);
-    	
-		LoginGetterSetter lgs = factory.getBean(LoginGetterSetter.class);
+		
 		
 //		ArrayList<String> res = new ArrayList();
 		
@@ -45,13 +42,18 @@ public class ViewDAO {
 //			int i = 0;
 			while(rs.next())
 			{
+				//specify the configuration file
+		    	ApplicationContext factory = new AnnotationConfigApplicationContext(AppConfig.class);
+		    	
+				LoginGetterSetter lgs = factory.getBean(LoginGetterSetter.class);
+				
 //				LoginGetterSetter lgs = new LoginGetterSetter();
 //				fetch value in getters and setters
 				 lgs.setUsername(rs.getString("username"));
 				 lgs.setPassword(rs.getString("password"));
 //				String uname = rs.getString("username");
 //				String pass = rs.getString("password");	
-				System.out.println(lgs);
+//				System.out.println(lgs);
 				 pList.add(lgs);
 				
 			}

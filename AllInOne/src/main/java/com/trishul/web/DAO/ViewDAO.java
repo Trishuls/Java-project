@@ -55,6 +55,7 @@ public class ViewDAO {
 		{
 			e.printStackTrace();
 		}
+//		System.out.println(pList);
 		return pList;		
 	}
 }
