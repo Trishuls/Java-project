@@ -20,15 +20,15 @@ public class WordCount {
 		HashMap<String, Integer> hm = new HashMap<String, Integer>();
 		for(int i=0;i<arr.length;i++)
 		{
-			for(int j=0;j<arr.length;j++)
+			if(hm.containsKey(arr[i]))
 			{
-				if(arr[i].equals(arr[j]))
-				{
-					++count;
-				}
+				count = hm.get(arr[i]);
+				hm.put(arr[i], count+1);
 			}
-			hm.put(arr[i], count);
-			count =0;
+			else
+			{
+				hm.put(arr[i], 1);
+			}	
 		}
 		
 		for(Map.Entry m:hm.entrySet())
